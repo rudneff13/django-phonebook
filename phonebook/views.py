@@ -15,7 +15,7 @@ def index(request):
     start = int(G.get('start', 0))
     rows = int(G.get('rows', 30))
     cats = Category.objects.filter(parent_category__id=category, status=Category.SHOW)
-    cols = Phonebook.objects.filter(category__in=cats, status=Category.SHOW).order_by('order_time')
+    cols = Phonebook.objects.filter(category__in=cats, status=Phonebook.SHOW).order_by('order_time')
     total = cols.count()
     data = []
     for item in cols[start:start+rows]:
